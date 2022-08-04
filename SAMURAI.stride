@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="SAMURAI" extends="Actor" extends-java="Actor" enable="true" strideversion="1">
+    <javadoc xml:space="preserve"/>
+    <imports>
+        <import target="java.util.*" enable="true"/>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields>
+        <variable access="private" type="int" type-java="int" name="score" value="0" value-java="0" enable="true"/>
+    </fields>
+    <constructors/>
+    <methods>
+        <method access="public" type="void" type-java="void" name="act" enable="true">
+            <javadoc xml:space="preserve">Act - do whatever the SAMURAI wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="move(2)" expression-java="move(2)" enable="true"/>
+                <if condition="Greenfoot.isKeyDown(&quot;left&quot;)" condition-java="Greenfoot.isKeyDown(&quot;left&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="turn(-5)" expression-java="turn(-5)" enable="true"/>
+                    </ifStatements>
+                </if>
+                <if condition="Greenfoot.isKeyDown(&quot;right&quot;)" condition-java="Greenfoot.isKeyDown(&quot;right&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="turn(5)" expression-java="turn(5)" enable="true"/>
+                    </ifStatements>
+                </if>
+                <call expression="eatPower()" expression-java="eatPower()" enable="true"/>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="eatPower" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <if condition="isTouching(ball.class)" condition-java="isTouching(ball.class)" enable="true">
+                    <ifStatements>
+                        <call expression="removeTouching(ball.class)" expression-java="removeTouching(ball.class)" enable="true"/>
+                        <assign dest="score" dest-java="score" src="score+1" src-java="score + 1" enable="true"/>
+                        <call expression="getWorld().showText(&quot;Puntuaje:&quot;+score,100,30)" expression-java="getWorld().showText(&quot;Puntuaje:&quot; + score, 100, 30)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+    </methods>
+</class>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="enemy" extends="Actor" extends-java="Actor" enable="true" strideversion="1">
+    <javadoc xml:space="preserve"/>
+    <imports>
+        <import target="java.util.*" enable="true"/>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields/>
+    <constructors/>
+    <methods>
+        <method access="public" type="void" type-java="void" name="act" enable="true">
+            <javadoc xml:space="preserve">Act - do whatever the enemy wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="move(2)" expression-java="move(2)" enable="true"/>
+                <if condition="Greenfoot.getRandomNumber(100)&lt;10" condition-java="Greenfoot.getRandomNumber(100) &lt; 10" enable="true">
+                    <ifStatements>
+                        <call expression="turn(Greenfoot.getRandomNumber(15)-30)" expression-java="turn(Greenfoot.getRandomNumber(15) - 30)" enable="true"/>
+                    </ifStatements>
+                </if>
+                <call expression="eatSamurai()" expression-java="eatSamurai()" enable="true"/>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="eatSamurai" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <if condition="isTouching(SAMURAI.class)" condition-java="isTouching(SAMURAI.class)" enable="true">
+                    <ifStatements>
+                        <call expression="removeTouching(SAMURAI.class)" expression-java="removeTouching(SAMURAI.class)" enable="true"/>
+                        <call expression="getWorld().showText(&quot;Perdiste!&quot;,300,200)" expression-java="getWorld().showText(&quot;Perdiste!&quot;, 300, 200)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+    </methods>
+</class>
